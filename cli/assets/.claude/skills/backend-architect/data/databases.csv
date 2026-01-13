@@ -1,0 +1,19 @@
+Category,Technology,Key Feature 2025,Use Case Primary,Consistency Model,License/Model
+SQL (Relational),PostgreSQL 18,Native UUID v7 / Async I/O,General Purpose / AI Backend,Strong (Single Node),Open Source
+SQL (Relational),MySQL 8.4 LTS,Optimized Defaults / Group Replication,Web Applications / Legacy,Strong / Eventual,GPL / Open Source
+SQL (Serverless),Neon,Branching / Separation of Compute-Storage,DevOps / Scalable Apps,Strong,Open Core / Managed
+SQL (Serverless),PlanetScale,Bare-metal Performance / Neki Sharding,High-Scale OLTP,Strong / Eventual,Proprietary / Managed
+SQL (Serverless),Supabase,Realtime / Integrated pgvector,Firebase Alternative,Strong,Open Source / Managed
+NoSQL (Document),MongoDB 8.0,Voyage AI Integration / Incremental Compaction,Content Management / AI Platform,Tunable (Local/Majority),SSPL
+NoSQL (Wide-Column),Cassandra 5.0,Storage Attached Indexes (SAI) / Trie Memtables,High-Write Throughput / Logs,Tunable / Eventual,Apache 2.0
+NoSQL (Key-Value),DynamoDB,Zero-ETL to Redshift / Write Sharding,Serverless Microservices,Eventual / Strong,Proprietary (AWS)
+Vector,Pinecone,Serverless Slab Architecture / Dedicated Read Nodes,Large Scale RAG,Eventual (LSN Tracking),Proprietary / Managed
+Vector,Qdrant,Tiered Multitenancy / Rust Engine,AI Agents / SaaS,Strong / Eventual,Apache 2.0
+Vector,Weaviate,Raft Consensus / Tunable Consistency,Enterprise Knowledge Base,Tunable (ONE/QUORUM/ALL),BSD-3-Clause
+NewSQL,CockroachDB,Performance under Adversity / Vector Support,Global Financial Systems,Serializable,BSL / Proprietary
+NewSQL,Aurora DSQL,Strong Consistency on Read Replicas,High-Availability APIs,Strong (Global),Proprietary (AWS)
+Time-Series/OLAP,ClickHouse,Async Inserts / JSON Columnar,Real-time Telemetry / Logs,Eventual,Apache 2.0
+Time-Series/OLAP,DuckDB (MotherDuck),Dual Execution / In-Process Analytics,Local Analysis / Data Engineering,ACID,MIT
+Time-Series/SQL,TimescaleDB,Hypertables / Continuous Aggregates,IoT / Metrics on Postgres,Strong,Apache 2.0 / TSL
+Edge DB,SQLite (Turso/D1),WAL Shipping / Global Replication,Local-First Apps / Edge Functions,Eventual (Read-your-writes),Open Source / Managed
+In-Memory,Redis 8.4,Multi-threaded I/O / Vector Search,Caching / Real-time RecSys,Strong / Eventual,RSALv2 / SSPL

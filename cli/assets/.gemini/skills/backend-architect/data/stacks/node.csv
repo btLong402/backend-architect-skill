@@ -1,0 +1,7 @@
+id,name,category,recommendation,reasoning,config_snippet
+node_runtime_bun,Bun,Runtime,Highly Recommended for Greenfield,Nhanh hơn Node.js 4x start-up. Tích hợp sẵn test runner, bundler, package manager. Hỗ trợ TypeScript native.,bun run index.ts
+node_framework_hono,Hono,Framework,Best for Edge/Serverless,Siêu nhẹ, chạy trên mọi runtime (Node, Bun, Cloudflare). RegexpRouter nhanh nhất hiện nay.,const app = new Hono()
+node_framework_fastify,Fastify,Framework,Best for Microservices,Nhanh hơn Express 2x. Schema-based validation (Ajv) giúp tăng tốc serialize JSON.,fastify({ logger: true })
+node_orm_drizzle,Drizzle ORM,Database,Standard 2025,Thay thế TypeORM/Prisma. Không runtime overhead. SQL-like syntax dễ debug. Hỗ trợ Serverless tốt.,"export const users = pgTable('users', { id: serial('id').primaryKey() })"
+node_test_vitest,Vitest,Testing,Standard,Nhanh hơn Jest. Dùng chung config với Vite. Hỗ trợ ESM native và in-source testing.,"defineConfig({ test: { globals: true } })"
+node_tool_biome,Biome,Tooling,Linting/Formatting,Thay thế ESLint + Prettier. Viết bằng Rust, nhanh hơn 35x. Cấu hình đơn giản.,"biome check --apply."

@@ -1,0 +1,33 @@
+id,protocol,code,name,description,http_mapping,handling_strategy,fix_recommendation
+err_http_400,HTTP,400,Bad Request,Client gửi dữ liệu sai định dạng hoặc thiếu trường bắt buộc.,400,Fail,Validate input using Zod/Pydantic before processing. Return clear validation messages.
+err_http_401,HTTP,401,Unauthorized,Client chưa xác thực hoặc token hết hạn/không hợp lệ.,401,Alert,Check Authorization header. If JWT expired, try refresh token flow.
+err_http_403,HTTP,403,Forbidden,Client đã xác thực nhưng không có quyền truy cập tài nguyên này (RBAC).,403,Fail,Log security audit. Check user permissions/scopes. Do NOT retry.
+err_http_404,HTTP,404,Not Found,Tài nguyên không tồn tại.,404,Fail,Return standard 404 response. Ensure ID format is valid before querying.
+err_http_409,HTTP,409,Conflict,Xung đột trạng thái (VD: Email đã tồn tại).,409,Fail,Check for unique constraints. Suggest user specific field to change.
+err_http_422,HTTP,422,Unprocessable Entity,Dữ liệu đúng cú pháp nhưng sai về mặt ngữ nghĩa (VD: password quá ngắn).,422,Fail,Provide field-level error details in response body (RFC 7807 Problem Details).
+err_http_429,HTTP,429,Too Many Requests,Vượt quá giới hạn rate limit.,429,Retry (Later),Respect 'Retry-After' header. Implement client-side exponential backoff.
+err_http_500,HTTP,500,Internal Server Error,Lỗi không xác định từ phía server.,500,Alert,Log stack trace internally. Return generic error message to client. Alert Dev team.
+err_http_502,HTTP,502,Bad Gateway,Server nhận phản hồi lỗi từ upstream service.,502,Retry,Retry request once. Check upstream service health.
+err_http_503,HTTP,503,Service Unavailable,Server quá tải hoặc đang bảo trì.,503,Retry,Implement Circuit Breaker pattern. Retry with backoff.
+err_grpc_3,gRPC,3,INVALID_ARGUMENT,Client specified an invalid argument.,400,Fail,Validate request proto fields.
+err_grpc_4,gRPC,4,DEADLINE_EXCEEDED,Request took too long to complete.,504,Retry,Check timeouts. Optimize query. Maybe retry if idempotent.
+err_grpc_5,gRPC,5,NOT_FOUND,Some requested entity was not found.,404,Fail,Return 404. Don't leak existence if security sensitive.
+err_grpc_6,gRPC,6,ALREADY_EXISTS,Entity creation failed because it already exists.,409,Fail,Map to HTTP 409. Suggest checking ID/Name uniqueness.
+err_grpc_7,gRPC,7,PERMISSION_DENIED,Caller does not have permission.,403,Fail,Check RBAC/ABAC policies.
+err_grpc_16,gRPC,16,UNAUTHENTICATED,Request does not have valid credentials.,401,Alert,Trigger re-authentication flow.
+err_grpc_8,gRPC,8,RESOURCE_EXHAUSTED,Quota exceeded or out of memory.,429,Retry (Later),Implement backoff. Check rate limits.
+err_grpc_14,gRPC,14,UNAVAILABLE,Service is currently unavailable (transient).,503,Retry,This is a transient error. Safe to retry with exponential backoff.
+err_pg_23505,PostgreSQL,23505,unique_violation,Vi phạm ràng buộc duy nhất (Unique Constraint).,409,Fail,Catch error and return 'User/Resource already exists'. Do not leak raw DB error.
+err_pg_23503,PostgreSQL,23503,foreign_key_violation,Tham chiếu khóa ngoại không tồn tại.,400,Fail,Ensure referenced entities exist. Return 'Invalid reference'.
+err_pg_23502,PostgreSQL,23502,not_null_violation,Cố gắng ghi NULL vào cột NOT NULL.,400,Fail,Validate required fields in application logic before saving.
+err_pg_40001,PostgreSQL,40001,serialization_failure,Xung đột transaction (Deadlock hoặc Isolation level).,500,Retry,Retry the transaction immediately (Optimistic Locking strategy).
+err_pg_08006,PostgreSQL,08006,connection_failure,Mất kết nối tới Database.,503,Retry,Check DB connection pool. Implement reconnect logic.
+err_mongo_11000,MongoDB,11000,Duplicate Key Error,Trùng lặp khóa index (thường là _id hoặc unique field).,409,Fail,Catch E11000. Return 'Resource already exists'.
+err_mongo_121,MongoDB,121,DocumentValidationFailure,Document không khớp với schema validation.,400,Fail,Review inputs against BSON schema.
+err_mongo_50,MongoDB,50,MaxTimeMSExpired,Query vượt quá thời gian cho phép.,504,Retry,Optimize query indices. Increase MaxTimeMS if necessary (cautiously).
+err_redis_moved,Redis,MOVED,Moved (Cluster),Key nằm ở node khác (trong Redis Cluster).,500,Retry,Update Cluster Map in client driver. Driver usually handles this, but verify configuration.
+err_redis_loading,Redis,LOADING,Loading Dataset,Redis đang khởi động và load data từ đĩa.,503,Retry,Wait and retry. Service is starting up.
+err_redis_wrongtype,Redis,WRONGTYPE,Wrong Type,Thao tác sai kiểu dữ liệu (VD: List command on String key).,400,Fail,Fix application logic. Key type mismatch.
+err_oauth_grant,OAuth2,invalid_grant,Invalid Grant,Authorization code hoặc refresh token không hợp lệ/hết hạn.,401,Alert,Force user logout or re-login. Do not retry automatically.
+err_oauth_client,OAuth2,invalid_client,Invalid Client,Client authentication failed (sai Client ID/Secret).,401,Fail,Check server-side configuration/secrets.
+err_oauth_scope,OAuth2,invalid_scope,Invalid Scope,Scope yêu cầu không hợp lệ hoặc vượt quyền.,403,Fail,Request only allowed scopes. Check scope configuration.

@@ -1,0 +1,6 @@
+id,name,category,recommendation,reasoning,config_snippet
+go_router_std,net/http (Go 1.22+),Router,Recommended for simple services,Go 1.22 đã hỗ trợ path parameters và method matching. Không cần Gin/Chi cho service đơn giản.,"http.HandleFunc(""POST /items/{id}"", handler)"
+go_router_echo,Echo,Framework,Recommended for complex APIs,Performance tốt, API dễ dùng, middleware phong phú hơn Gin. Binder mạnh mẽ.,"e := echo.New()"
+go_db_sqlc,sqlc,Database,Best Practice,Sinh code Go từ file SQL thuần. Type-safe 100%. Không dùng reflection (nhanh hơn GORM).,"version: ""2""\nsql:..."
+go_log_slog,log/slog,Logging,Standard,Logging cấu trúc (JSON) có sẵn trong Go 1.21+. Hiệu năng cao, không cần zap/logrus.,"slog.Info(""msg"", ""key"", val)"
+go_di_wire,Google Wire,Dependency Injection,Optional (Large Apps),Compile-time DI. Không dùng reflection magic như Uber Dig.,"wire.Build(...)"

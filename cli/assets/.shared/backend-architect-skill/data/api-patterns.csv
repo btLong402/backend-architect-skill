@@ -1,0 +1,8 @@
+ID,Pattern_Name,Primary_Use_Case,Transport_Protocol,Data_Format,Key_Strength,Key_Weakness,Trend_2025_Status
+P01,REST,Public APIs & Simple CRUD,HTTP/1.1 or HTTP/2,JSON/XML,Universal compatibility & Caching,Over/Under-fetching,Stable/Dominant
+P02,GraphQL,Complex Clients (Mobile/Web),HTTP (Single Endpoint),JSON,Flexible data fetching & Federation,Complexity & Caching difficulty,Standard for Aggregation
+P03,gRPC,Internal Microservices,HTTP/2,Protobuf (Binary),High Performance & Polyglot,Browser support limitation,High Adoption in Backend
+P04,WebSockets,Real-time Bidirectional (Chat/Gaming),TCP,Text/Binary,Low Latency & Full Duplex,Stateful connection management,Standard for Interactive Apps
+P05,SSE,Real-time Unidirectional (Feeds),HTTP/1.1 or HTTP/2,Text (UTF-8),Simple & Auto-reconnect,Unidirectional only,Resurgence with HTTP/2
+P06,tRPC,TypeScript Monorepos,HTTP,JSON,End-to-end Type Safety & DX,Tight coupling to TypeScript,Popular in T3 Stack
+P07,MCP,AI Agent Integration,JSON-RPC / StdIO,JSON,Standardized AI context & Tooling,Security context management,Breakout/Emerging Standard

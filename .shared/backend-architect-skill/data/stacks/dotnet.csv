@@ -1,0 +1,6 @@
+id,name,category,recommendation,reasoning,config_snippet
+dotnet_ver_9,.NET 9,Framework,Standard,Hiệu năng vượt trội. Native AOT cải tiến. LINQ tối ưu.,"<TargetFramework>net9.0</TargetFramework>"
+dotnet_arch_aspire,.NET Aspire,Orchestration,Cloud-Native Standard,Quản lý microservices, service discovery, telemetry tự động ngay từ local.,"builder.AddProject<Projects.Api>(""api"")"
+dotnet_orm_efcore,EF Core 9,Database,Standard,Hỗ trợ JSON column tốt hơn. Compile queries nhanh hơn. Bulk updates/deletes hiệu quả.,"context.Users.Where(u =>...).ExecuteUpdateAsync(...)"
+dotnet_api_minimal,Minimal APIs,API Style,Recommended,Nhanh hơn Controller-based. Code gọn nhẹ, phù hợp microservices.,"app.MapGet(""/weather"", () =>...)"
+dotnet_test_xunit,xUnit,Testing,Standard,Framework test phổ biến nhất. Kết hợp với Testcontainers cho integration test.,"[Fact] public void Test1() {... }"
