@@ -23,12 +23,15 @@ Identify from user request:
 python3 .agent/workflows/scripts/search.py "<query>" --domain <domain>
 ```
 
-**Domains**: architecture, database, security, product, language, api, naming, error, platform
+**Domains**: architecture, database, security, product, language, api, naming, error, platform, db_design
 
 **Example searches**:
 ```bash
 # Product recommendations
 python3 .agent/workflows/scripts/search.py "ecommerce" --domain product
+
+# Database Best Practices (NEW)
+python3 .agent/workflows/scripts/search.py "primary key" --domain db_design
 
 # Architecture pattern
 python3 .agent/workflows/scripts/search.py "microservices" --domain architecture

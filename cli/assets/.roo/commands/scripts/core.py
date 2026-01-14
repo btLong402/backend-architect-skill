@@ -58,6 +58,11 @@ CSV_CONFIG = {
         "file": "platform.csv",
         "search_cols": ["Category", "Tool", "Type", "Key Feature"],
         "output_cols": ["Category", "Tool", "Type", "License", "Key Feature", "2025 Trend Status"]
+    },
+    "db_design": {
+        "file": "database-design.csv",
+        "search_cols": ["category", "principle", "description"],
+        "output_cols": ["category", "principle", "description", "recommendation", "impact"]
     }
 }
 
@@ -187,6 +192,7 @@ def detect_domain(query):
         "language": ["rust", "golang", "java", "python", "node", "typescript", "dotnet", "elixir", "php", "ruby", "c++", "framework"],
         "api": ["rest", "graphql", "grpc", "websocket", "sse", "trpc", "mcp", "api", "endpoint", "http"],
         "naming": ["naming", "convention", "variable", "function", "class", "table", "column", "camelcase", "snake_case"],
+        "db_design": ["schema", "modeling", "normalization", "index", "partitioning", "performance", "optimization", "query", "primary key", "foreign key", "uuid", "scale"],
         "error": ["error", "exception", "status code", "http 4", "http 5", "grpc error", "handling", "retry"],
         "platform": ["kubernetes", "terraform", "argocd", "vault", "observability", "gitops", "devops", "platform", "iac"]
     }

@@ -1,0 +1,12 @@
+id,category,principle,description,recommendation,impact
+db_naming,Table Design,Naming Convention,Standardize table and column names for readability and consistency.,Use snake_case and plural for tables (e.g., users). Use snake_case for columns. Avoid abbreviations.,Maintainability
+db_pk_strategy,Table Design,Primary Key Strategy,Choosing the right primary key type impacts insertion speed and storage size.,Use UUID v7 or TSID for distributed systems. Use Integer/BigInt for internal/small apps. Avoid random UUID v4 if possible.,Speed/Storage
+db_data_types,Table Design,Data Type Optimization,Using correct data types saves storage and prevents errors.,Use DECIMAL for money (never FLOAT). Use TIMESTAMPTZ for time. Use DB-native JSONB for semi-structured data.,Storage/Accuracy
+db_fk_indexing,Relationships,Foreign Key Indexing,Database does not index foreign keys by default, leading to slow JOINs.,ALWAYS index foreign key columns. 99% of joins query on FKs.,Speed
+db_cascade,Relationships,Cascade Delete Risks,Cascading deletes can lock large portions of the database.,Avoid ON DELETE CASCADE for critical data. Use Soft Delete or background jobs cleanup.,Availability
+db_avoid_triggers,Functions,Avoid Triggers,Triggers hide logic and complicate debugging.,Minimize triggers. Use them only for data integrity (e.g., updated_at) or audit logging.,Maintainability
+db_select_star,Queries,No SELECT *,Fetching all columns wastes bandwidth and memory.,Explicitly list columns. Avoid SELECT *. Enables Covering Index usage.,Speed
+db_n_plus_1,Queries,N+1 Problem,Fetching related data in a loop kills scalability.,Use JOINs or WHERE IN (Eager Loading) instead of loops.,Scalability
+db_sargable,Queries,SARGable Queries,Search ARGument ABLE queries allow index usage.,Avoid functions on columns in WHERE clause (e.g., WHERE YEAR(date) = 2024). Use range queries instead.,Speed
+db_partitioning,Storage,Table Partitioning,Splitting large tables improves query speed and maintenance.,Partition tables > 10M rows, usually by time ranges (e.g., logs).,Scalability
+db_pagination,Queries,Keyset Pagination,Offset/Limit gets slow as pages increase.,Use Cursor/Keyset pagination (WHERE id > last_id LIMIT N) for deep pagination.,Speed

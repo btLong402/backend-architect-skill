@@ -1,6 +1,6 @@
 {
     "name": "backend-architect-cli",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "CLI to install Backend Architect skill for AI coding assistants",
     "type": "module",
     "bin": {
