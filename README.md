@@ -2,155 +2,121 @@
 
 # 🏗️ Backend Architect Skill
 
-**An AI SKILL that provides architecture intelligence for building professional backend systems**
+**Expert architectural intelligence for building professional, scalable, and secure backend systems.**
 
+[![npm version](https://img.shields.io/npm/v/backend-architect-cli.svg)](https://www.npmjs.com/package/backend-architect-cli)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Downloads](https://img.shields.io/npm/dm/backend-architect-cli.svg)](https://www.npmjs.com/package/backend-architect-cli)
+
+[Overview](#-overview) | [Features](#-features) | [Installation](#-installation) | [Usage](#-usage) | [Supported Assistants](#-supported-ai-assistants)
 
 </div>
 
 ---
 
-## Overview
+## 🌟 Overview
 
-Backend Architect Skill is a searchable database of backend architectures, databases, security guidelines, language best practices, API patterns, and platform engineering recommendations. It works as a skill/workflow for AI coding assistants (Claude Code, Codex, Cursor, Windsurf, Gemini, Copilot, etc.).
+**Backend Architect Skill** is a comprehensive, searchable intelligence layer for modern backend engineering. It provides AI coding assistants with deep knowledge of architectural patterns, database selections, security standards, and platform engineering best practices.
 
-## Features
-
-- **13 Architecture Patterns** - Modular Monolith, Microservices, Serverless, CQRS, Event-Driven, Clean/Hexagonal, and more
-- **19 Databases** - PostgreSQL, MongoDB, Redis, Cassandra, ClickHouse, vector DBs, and more
-- **14 Security Guidelines** - OWASP Top 10 2025, API Security, Container Security, Secrets Management
-- **15 Product Types** - E-commerce, SaaS, Fintech, Chat, AI Agent, IoT, and more
-- **13 Languages/Frameworks** - Rust, Go, Java, Python, Node.js, .NET, Elixir, and more
-- **7 API Patterns** - REST, GraphQL, gRPC, WebSocket, SSE, tRPC, MCP
-- **28 Naming Conventions** - Python, Go, Java, TypeScript, SQL, MongoDB, Redis
-- **32 Error Codes** - HTTP, gRPC, PostgreSQL, MongoDB, OAuth2
-- **18 Platform Tools** - Kubernetes, Terraform, ArgoCD, Vault, OpenTelemetry
-- **6 Stack Guidelines** - Go, Python, Node, Java, .NET, Rust
+Whether you're designing a high-traffic e-commerce platform, a real-time fintech application, or a scalable SaaS, this skill ensures your AI partner provides expert-level recommendations based on industry-standard patterns (Clean Architecture, Microservices, Event-Driven, etc.).
 
 ---
 
-## Installation
+## 🚀 Features
 
-### Using CLI (Recommended)
+The knowledge base is built on structured data covering over 100+ architectural components:
+
+- **🏗️ Architecture Patterns**: Modular Monolith, Microservices, Serverless, CQRS, Event-Driven, Clean/Hexagonal, Layered, and more.
+- **🗄️ Database Intelligence**: Deep insights into 19+ databases including PostgreSQL, MongoDB, Redis, Cassandra, ClickHouse, and Vector DBs.
+- **🛡️ Security First**: Integrated guidelines for OWASP Top 10 (2025), API Security, Container Security, and Secrets Management.
+- **📱 Product-Specific Blueprints**: Tailored architectures for E-commerce, SaaS, Fintech, Chat, AI Agents, IoT, and more.
+- **💻 Language & Framework Excellence**: Best practices for Rust, Go, Java, Python, Node.js, .NET, and Elixir.
+- **🔌 API Design Patterns**: Standardized approaches for REST, GraphQL, gRPC, WebSockets, SSE, and MCP.
+- **🛠️ Platform & DevOps**: Infrastructure patterns using Kubernetes, Terraform, ArgoCD, Vault, and OpenTelemetry.
+- **📏 Standards & Conventions**: Pre-defined naming conventions and error handling patterns (HTTP, gRPC, DB-specific).
+
+---
+
+## 📦 Installation
+
+### The Quick Way (Recommended)
+
+Bootstrap your project with the official CLI. It automatically detects your environment and installs the skill for your preferred AI assistants.
 
 ```bash
 npx backend-architect-cli
 ```
 
-Or install globally:
+### Global Installation
+
+For frequent use across multiple projects:
 
 ```bash
+# Install globally
 npm install -g backend-architect-cli
+
+# Initialize in any project
 backend-architect init
 ```
 
-### Install for Specific AI
+---
 
-```bash
-npx backend-architect-cli init --ai claude
-npx backend-architect-cli init --ai cursor
-npx backend-architect-cli init --ai gemini
-npx backend-architect-cli init --ai all
-```
+## 🤖 Supported AI Assistants
 
-### Manual Installation
+Deploy **Backend Architect** to your entire development workflow:
 
-Clone this repository into your project:
-
-```bash
-git clone https://github.com/your-username/backend-architect-skill.git
-```
+| Assistant | Integration Method | Purpose |
+|-----------|---------------------|---------|
+| **Claude Code** | `.claude/skills/` | Direct skill execution & environment injection |
+| **Cursor** | `.cursor/commands/` | Custom terminal commands & context indexing |
+| **Windsurf** | `.windsurf/workflows/` | Agentic workflow automation |
+| **Antigravity** | `.agent/workflows/` | Advanced multi-step architecture design |
+| **Gemini CLI** | `.gemini/skills/` | Google Gemini native skill extensions |
+| **GitHub Copilot** | `.github/prompts/` | Custom prompt templates & system instructions |
+| **RooCode** | `.roo/commands/` | Specialized custom command integration |
+| **Kiro / Qoder** | `.kiro/` / `.qoder/` | Rule-based steering and architectural constraints |
 
 ---
 
-## Prerequisites
+## 🛠️ Usage
 
-- Python 3.8+ (uses only standard library, no external dependencies)
+### Workflow-Based (Cursor, Windsurf, Antigravity)
+Use the slash command or workflow runner:
+```
+/backend-architect Create a microservices design for a payment processing system
+```
+
+### Skill-Based (Claude Code, Gemini CLI)
+The skill activates automatically when you request architectural work. You can also trigger it manually:
+```
+Design a scalable backend for a real-time IoT telemetry system using Go and Kafka.
+```
+
+### Example Prompts
+- *"Recommend a database strategy for a multi-tenant SaaS with global users."*
+- *"Review my current architecture for OWASP 2025 security compliance."*
+- *"Generate a naming convention guide for a new Rust-based backend project."*
 
 ---
 
-## Usage
+## 📖 How It Works
 
-### Claude Code
-
-The skill activates automatically when you request backend architecture work. Just chat naturally:
-
-```
-Design a backend for an e-commerce platform
-```
-
-### Cursor / Windsurf / Antigravity
-
-Use the slash command to invoke the skill:
-
-```
-/backend-architect Design a backend for an e-commerce platform
-```
-
-### GitHub Copilot
-
-Type `/` in chat to see available prompts, then select `backend-architect`:
-
-```
-/backend-architect Design a backend for an e-commerce platform
-```
-
-### Gemini CLI
-
-The skill activates automatically for backend architecture requests.
-
-```
-Design a backend for an e-commerce platform
-```
+1.  **Requirement Analysis**: The AI analyzes your product type, expected scale, and technology preferences.
+2.  **Domain Searching**: It searches the specific knowledge domains (Architecture, Security, Database, etc.) within the `.shared/` database.
+3.  **Cross-Reference**: Matches your needs against established patterns and trade-offs.
+4.  **Actionable Output**: Delivers specific, version-aware implementation guidance with reasoning.
 
 ---
 
-## Example Prompts
+## 📄 License
 
-```
-Design a backend for an e-commerce platform with high traffic
-Build a real-time chat application backend
-Create a microservices architecture for a fintech app
-Recommend a database for an IoT telemetry system
-What security guidelines should I follow for a SaaS?
-```
-
----
-
-## How It Works
-
-1. **You ask** - Request any backend architecture task (design, recommend, choose, review)
-2. **Skill activates** - The AI automatically searches the architecture database
-3. **Smart recommendations** - Based on your product type and requirements, it finds the best matching patterns
-4. **Implementation guidance** - Provides specific recommendations with trade-offs and best practices
-
----
-
-## Available Domains
-
-| Domain | Description |
-|--------|-------------|
-| `architecture` | System architecture patterns (Microservices, Monolith, Serverless) |
-| `database` | Database selection and recommendations |
-| `security` | OWASP, API Security, Container Security |
-| `product` | Product-specific architecture recommendations |
-| `language` | Language and framework selection |
-| `api` | API design patterns (REST, GraphQL, gRPC) |
-| `naming` | Naming conventions for different languages |
-| `error` | Error handling patterns and status codes |
-| `platform` | DevOps and Platform engineering tools |
-
----
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for backend developers**
+**Built for architects, by architects. Happy coding!**
 
 </div>
