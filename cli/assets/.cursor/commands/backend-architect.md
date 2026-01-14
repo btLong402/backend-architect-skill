@@ -8,6 +8,11 @@ Search the backend architecture knowledge base for recommendations.
 
 ## How to Use
 
+### Step 1: Verify Latest Versions (STRICT)
+**Before starting work**, verify the latest stable versions of technologies via web search (e.g., `latest stable version Go 2026`). Update `Dockerfile`, `go.mod`, `package.json` accordingly.
+
+### Step 2: Search Knowledge Base
+
 ```bash
 python3 .cursor/commands/scripts/search.py "<query>" --domain <domain>
 ```

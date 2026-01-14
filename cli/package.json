@@ -1,6 +1,6 @@
 {
     "name": "backend-architect-cli",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "description": "CLI to install Backend Architect skill for AI coding assistants",
     "type": "module",
     "bin": {
@@ -11,8 +11,9 @@
         "assets"
     ],
     "scripts": {
-        "build": "tsc",
-        "build:bun": "bun build src/index.ts --outdir dist --target node",
+        "sync:assets": "bash scripts/sync-assets.sh",
+        "build": "npm run sync:assets && tsc",
+        "build:bun": "npm run sync:assets && bun build src/index.ts --outdir dist --target node",
         "dev": "npx ts-node --esm src/index.ts",
         "prepublishOnly": "npm run build"
     },

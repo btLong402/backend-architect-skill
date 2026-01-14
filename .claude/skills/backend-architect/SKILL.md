@@ -45,7 +45,18 @@ python3 .claude/skills/backend-architect/scripts/search.py "<keyword>" --stack <
 
 Available stacks: `go`, `python`, `node`, `java`, `dotnet`, `rust`
 
+### Step 4: Verify Latest Versions (STRICT)
+
+**Before starting work**, always verify the latest stable versions of technologies via web search. AI training data has a knowledge cutoff (e.g., Go 1.24 is now out, but AI might only know 1.23).
+
+- **Search Query**: `latest stable version <technology> Jan 2026`
+- **What to check**: Language runtimes (Go, Python, Node), Base Docker images, Primary frameworks.
+- **Where to apply**: Dockerfile, go.mod, package.json, requirements.txt.
+
+*Example: If AI suggests Go 1.23 but 1.24 is out, use 1.24-alpine in Dockerfile.*
+
 ---
+
 
 ## Search Reference
 

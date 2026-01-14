@@ -2,6 +2,9 @@
 
 Search the backend architecture knowledge base.
 
+## REQUIRED: Verify Latest Versions
+**Before starting work**, verify the latest stable versions of technologies via web search (e.g., `latest stable version Go 2026`). Update `Dockerfile`, `go.mod`, `package.json` accordingly.
+
 ## Usage
 
 ```bash

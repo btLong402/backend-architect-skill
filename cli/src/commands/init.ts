@@ -10,8 +10,8 @@ import { detectAIType, getAITypeDescription } from '../utils/detect.js';
 import { logger } from '../utils/logger.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-// From dist/index.js -> ../assets (one level up to cli/, then assets/)
-const ASSETS_DIR = join(__dirname, '..', 'assets');
+// From dist/commands/init.js -> go up 2 levels to cli/, then assets/
+const ASSETS_DIR = join(__dirname, '..', '..', 'assets');
 
 interface InitOptions {
     ai?: AIType;
