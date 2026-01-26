@@ -40,6 +40,15 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
     if (existsSync(join(cwd, '.gemini'))) {
         detected.push('gemini');
     }
+    if (existsSync(join(cwd, '.trae'))) {
+        detected.push('trae');
+    }
+    if (existsSync(join(cwd, '.opencode'))) {
+        detected.push('opencode');
+    }
+    if (existsSync(join(cwd, '.continue'))) {
+        detected.push('continue');
+    }
     if (existsSync(join(cwd, '.codebuddy'))) {
         detected.push('codebuddy');
     }
@@ -60,25 +69,31 @@ export function getAITypeDescription(aiType: AIType): string {
         case 'claude':
             return 'Claude Code (.claude/skills/)';
         case 'cursor':
-            return 'Cursor (.cursor/commands/)';
+            return 'Cursor (.cursor/commands/ + .shared/)';
         case 'windsurf':
-            return 'Windsurf (.windsurf/workflows/)';
+            return 'Windsurf (.windsurf/skills/ + .shared/)';
         case 'antigravity':
-            return 'Antigravity (.agent/workflows/)';
+            return 'Antigravity (.agent/skills/)';
         case 'copilot':
-            return 'GitHub Copilot (.github/prompts/)';
+            return 'GitHub Copilot (.github/prompts/ + .shared/)';
         case 'kiro':
-            return 'Kiro (.kiro/steering/)';
+            return 'Kiro (.kiro/steering/ + .shared/)';
         case 'codex':
             return 'Codex (.codex/skills/)';
         case 'roocode':
-            return 'RooCode (.roo/commands/)';
+            return 'RooCode (.roo/commands/ + .shared/)';
         case 'qoder':
-            return 'Qoder (.qoder/rules/)';
+            return 'Qoder (.qoder/rules/ + .shared/)';
         case 'gemini':
-            return 'Gemini CLI (.gemini/skills/)';
+            return 'Gemini CLI (.gemini/skills/ + .shared/)';
+        case 'trae':
+            return 'Trae (.trae/skills/)';
+        case 'opencode':
+            return 'OpenCode (.opencode/skills/ + .shared/)';
+        case 'continue':
+            return 'Continue (.continue/skills/)';
         case 'codebuddy':
-            return 'CodeBuddy (.codebuddy/commands/)';
+            return 'CodeBuddy (.codebuddy/skills/)';
         case 'all':
             return 'All AI assistants';
     }

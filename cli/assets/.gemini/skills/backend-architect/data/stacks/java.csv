@@ -1,6 +1,0 @@
-id,name,category,recommendation,reasoning,config_snippet
-java_ver_21,Java 21,Language,Mandatory,LTS mới nhất. Virtual Threads (Project Loom) giúp scale hàng triệu request mà không cần Reactive code phức tạp.,sourceCompatibility = '21'
-java_framework_sb3,Spring Boot 3.3+,Framework,Standard,Hỗ trợ native Virtual Threads. Docker Compose integration. AOT compilation.,"spring.threads.virtual.enabled=true"
-java_db_jooq,jOOQ,Database,High Performance,Type-safe SQL builder. Tốt hơn Hibernate cho các query phức tạp và reporting.,"dsl.selectFrom(USERS).fetch()"
-java_test_containers,Testcontainers,Testing,Mandatory,Integration test với DB thật (Docker). Không dùng H2 in-memory nữa (sai lệch hành vi).,"@ServiceConnection private static PostgreSQLContainer"
-java_build_gradle,Gradle (Kotlin DSL),Build Tool,Recommended,Nhanh hơn Maven. Cú pháp Kotlin type-safe dễ quản lý dependency.,"implementation(""org.springframework.boot:..."")"

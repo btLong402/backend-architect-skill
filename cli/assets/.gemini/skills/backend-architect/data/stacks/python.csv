@@ -1,7 +1,0 @@
-id,name,category,recommendation,reasoning,config_snippet
-py_pkg_uv,uv (Astral),Package Manager,Mandatory,Nhanh hơn pip/poetry 10-100x. Quản lý python version và venv tự động. Viết bằng Rust.,"uv init && uv add fastapi"
-py_framework_fastapi,FastAPI,Framework,Standard,Native AsyncIO. Tự động sinh OpenAPI. Pydantic v2 (Rust core) validation cực nhanh.,"app = FastAPI(lifespan=lifespan)"
-py_framework_litestar,Litestar,Framework,High Performance Option,Nhanh hơn FastAPI. Thiết kế hướng OOP và Dependency Injection mạnh mẽ hơn.,Litestar(route_handlers=[handler])
-py_lint_ruff,Ruff,Tooling,Linting/Formatting,Thay thế Flake8, Black, isort. Chạy trong mili-giây. All-in-one config.,"tool.ruff.lint.select = ['E', 'F', 'I']"
-py_test_pytest,pytest,Testing,Standard,Hệ sinh thái plugin khổng lồ. Fixtures mạnh mẽ.,"pytest -n auto (xdist)"
-py_ai_mcp,MCP SDK,AI Integration,Emerging Standard,Chuẩn kết nối LLM với dữ liệu nội bộ (Model Context Protocol).,"mcp.server.fastmcp"

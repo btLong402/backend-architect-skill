@@ -32,7 +32,10 @@ npx backend-architect-cli
 
 - **Auto-Detection**: Smartly identifies existing configurations for Claude, Cursor, Windsurf, etc.
 - **Interactive Setup**: Simple, user-friendly prompts to guide the installation.
-- **Multi-AI Support**: One tool to rule them all. Install for all your assistants at once.
+- **Multi-AI Support**: 14 AI assistants supported. Install for all at once with `--ai all`.
+- **Template-Based Generation**: Fast local generation without network dependency.
+- **Version Management**: Check available versions and update with `versions` and `update` commands.
+- **Shared Resources**: `.shared/` folder for efficient data/scripts reuse across platforms.
 - **Global Installation**: Optional global install for convenience.
 
 ---
@@ -101,8 +104,30 @@ npx backend-architect-cli init --ai codebuddy
 # Qoder (.qoder/rules/)
 npx backend-architect-cli init --ai qoder
 
-# All supported assistants at once
+# Trae AI (.trae/rules/)
+npx backend-architect-cli init --ai trae
+
+# OpenCode (.opencode/prompts/)
+npx backend-architect-cli init --ai opencode
+
+# Continue AI (.continue/prompts/)
+npx backend-architect-cli init --ai continue
+
+# All 14 assistants at once
 npx backend-architect-cli init --ai all
+```
+
+### Additional Commands
+
+```bash
+# Check available versions
+npx backend-architect-cli versions
+
+# Update to latest version
+npx backend-architect-cli update
+
+# Use legacy ZIP-based installation
+npx backend-architect-cli init --ai claude --legacy
 ```
 
 ---
@@ -112,16 +137,19 @@ npx backend-architect-cli init --ai all
 | Assistant | Location | Description |
 |-----------|----------|-------------|
 | **Claude Code** | `.claude/skills/` | Integrated AI skill definitions |
-| **Cursor** | `.cursor/commands/` | Custom terminal commands |
-| **Windsurf** | `.windsurf/workflows/` | AI-driven workflows |
-| **Antigravity** | `.agent/workflows/` | Advanced agentic workflows |
-| **Copilot** | `.github/prompts/` | Custom GitHub Copilot prompts |
-| **Gemini CLI** | `.gemini/skills/` | Google Gemini skill extensions |
-| **RooCode** | `.roo/commands/` | RooCode custom commands |
-| **Kiro** | `.kiro/steering/` | Kiro AI steering files |
-| **Qoder** | `.qoder/rules/` | Qoder custom rules |
-| **CodeBuddy** | `.codebuddy/commands/` | CodeBuddy terminal skills |
-| **Codex** | `.codex/skills/` | Codex skill definitions |
+| **Cursor** | `.cursor/commands/` + `.shared/` | Custom terminal commands |
+| **Windsurf** | `.windsurf/workflows/` + `.shared/` | AI-driven workflows |
+| **Antigravity** | `.agent/skills/` + `.shared/` | Advanced agentic skills |
+| **Copilot** | `.github/prompts/` + `.shared/` | Custom GitHub Copilot prompts |
+| **Gemini CLI** | `.gemini/skills/` + `.shared/` | Google Gemini skill extensions |
+| **RooCode** | `.roo/commands/` + `.shared/` | RooCode custom commands |
+| **Kiro** | `.kiro/steering/` + `.shared/` | Kiro AI steering files |
+| **Qoder** | `.qoder/rules/` + `.shared/` | Qoder custom rules |
+| **CodeBuddy** | `.codebuddy/commands/` + `.shared/` | CodeBuddy terminal skills |
+| **Codex** | `.codex/skills/` + `.shared/` | Codex skill definitions |
+| **Trae** | `.trae/rules/` + `.shared/` | Trae AI custom rules |
+| **OpenCode** | `.opencode/prompts/` + `.shared/` | OpenCode prompt templates |
+| **Continue** | `.continue/prompts/` + `.shared/` | Continue AI prompt integration |
 
 ---
 

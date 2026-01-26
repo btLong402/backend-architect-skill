@@ -1,6 +1,6 @@
 {
     "name": "backend-architect-cli",
-    "version": "1.0.8",
+    "version": "2.0.0",
     "description": "CLI to install Backend Architect skill for AI coding assistants",
     "type": "module",
     "bin": {
@@ -32,6 +32,12 @@
         "roocode",
         "codex",
         "qoder",
+        "gemini",
+        "trae",
+        "opencode",
+        "continue",
+        "codebuddy",
+        "antigravity",
         "ai",
         "skill"
     ],

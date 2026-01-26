@@ -1,21 +1,32 @@
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import chalk from 'chalk';
 import ora from 'ora';
 import prompts from 'prompts';
 import type { AIType } from '../types/index.js';
 import { AI_TYPES } from '../types/index.js';
-import { copyFolders } from '../utils/extract.js';
+import { generatePlatformFiles, generateAllPlatformFiles } from '../utils/template.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
 import { logger } from '../utils/logger.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-// From dist/commands/init.js -> go up 2 levels to cli/, then assets/
-const ASSETS_DIR = join(__dirname, '..', '..', 'assets');
 
 interface InitOptions {
     ai?: AIType;
     force?: boolean;
+}
+
+/**
+ * Install using template generation
+ */
+async function templateInstall(
+    targetDir: string,
+    aiType: AIType,
+    spinner: ReturnType<typeof ora>
+): Promise<string[]> {
+    spinner.text = 'Generating skill files from templates...';
+
+    if (aiType === 'all') {
+        return generateAllPlatformFiles(targetDir);
+    }
+
+    return generatePlatformFiles(targetDir, aiType);
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
@@ -52,13 +63,13 @@ export async function initCommand(options: InitOptions): Promise<void> {
 
     logger.info(`Installing for: ${chalk.cyan(getAITypeDescription(aiType))}`);
 
-    const spinner = ora('Installing files...').start();
+    const spinner = ora('Generating skill files...').start();
+    const cwd = process.cwd();
 
     try {
-        const cwd = process.cwd();
-        const copiedFolders = await copyFolders(ASSETS_DIR, cwd, aiType);
+        const copiedFolders = await templateInstall(cwd, aiType, spinner);
 
-        spinner.succeed('Installation complete!');
+        spinner.succeed('Generated from templates!');
 
         // Summary
         console.log();

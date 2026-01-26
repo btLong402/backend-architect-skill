@@ -1,6 +1,0 @@
-id,name,category,recommendation,reasoning,config_snippet
-rust_web_axum,Axum,Framework,Standard,Ergonomic nhất. Hệ sinh thái Tokio. Macro-free routing (dễ debug).,"axum::Router::new().route(""/"", get(handler))"
-rust_db_sqlx,SQLx,Database,Best Practice,Compile-time checked SQL queries. Async native. Không phải ORM, kiểm soát tối đa.,"sqlx::query!(""SELECT * FROM users"")"
-rust_runtime_tokio,Tokio,Runtime,Standard,De-facto standard cho async Rust. Hỗ trợ đa luồng tốt nhất.,"#[tokio::main]"
-rust_error_thiserror,thiserror / anyhow,Error Handling,Standard,thiserror cho lib (định nghĩa lỗi rõ ràng), anyhow cho app (xử lý lỗi linh hoạt).,"#"
-rust_log_tracing,tracing,Logging/Observability,Standard,Structured logging và distributed tracing. Tương thích OpenTelemetry.,"tracing::info!(user_id, ""login success"")"

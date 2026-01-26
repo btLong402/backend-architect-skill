@@ -1,0 +1,21 @@
+{
+    "platform": "claude",
+    "displayName": "Claude Code",
+    "installType": "full",
+    "folderStructure": {
+        "root": ".claude",
+        "skillPath": "skills/backend-architect",
+        "filename": "SKILL.md"
+    },
+    "scriptPath": "skills/backend-architect/scripts/search.py",
+    "frontmatter": {
+        "name": "backend-architect",
+        "description": "Backend architecture intelligence. System design patterns, database strategies, security best practices, scaling solutions. Actions: design, build, create, implement, review, fix, improve backend systems. Domains: microservices, event-driven, CQRS, DDD, API design, database, security, caching, messaging, monitoring. Stacks: Node.js, Python, Go, Java, Rust, .NET."
+    },
+    "sections": {
+        "quickReference": true
+    },
+    "title": "Backend Architect - System Design Intelligence",
+    "description": "Comprehensive backend architecture guide for building scalable, secure, and maintainable systems. Contains architecture patterns, database strategies, security best practices, API design patterns, scaling solutions, and stack-specific guidelines.",
+    "skillOrWorkflow": "Skill"
+}

@@ -1,0 +1,21 @@
+{
+    "platform": "codebuddy",
+    "displayName": "CodeBuddy",
+    "installType": "full",
+    "folderStructure": {
+        "root": ".codebuddy",
+        "skillPath": "skills/backend-architect",
+        "filename": "SKILL.md"
+    },
+    "scriptPath": "skills/backend-architect/scripts/search.py",
+    "frontmatter": {
+        "name": "backend-architect",
+        "description": "Backend architecture intelligence for system design."
+    },
+    "sections": {
+        "quickReference": false
+    },
+    "title": "Backend Architect",
+    "description": "Comprehensive backend architecture guide for building scalable, secure, and maintainable systems. Contains architecture patterns, database strategies, security best practices, API design patterns, scaling solutions, and stack-specific guidelines.",
+    "skillOrWorkflow": "Skill"
+}

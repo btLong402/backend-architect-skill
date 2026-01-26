@@ -58,24 +58,36 @@ npm install -g backend-architect-cli
 
 # Initialize in any project
 backend-architect init
+
+# Check available versions
+backend-architect versions
+
+# Update to latest version
+backend-architect update
 ```
 
 ---
 
 ## 🤖 Supported AI Assistants
 
-Deploy **Backend Architect** to your entire development workflow:
+Deploy **Backend Architect** to your entire development workflow (14 platforms):
 
 | Assistant | Integration Method | Purpose |
 |-----------|---------------------|---------|
 | **Claude Code** | `.claude/skills/` | Direct skill execution & environment injection |
-| **Cursor** | `.cursor/commands/` | Custom terminal commands & context indexing |
-| **Windsurf** | `.windsurf/workflows/` | Agentic workflow automation |
-| **Antigravity** | `.agent/workflows/` | Advanced multi-step architecture design |
-| **Gemini CLI** | `.gemini/skills/` | Google Gemini native skill extensions |
-| **GitHub Copilot** | `.github/prompts/` | Custom prompt templates & system instructions |
-| **RooCode** | `.roo/commands/` | Specialized custom command integration |
-| **Kiro / Qoder** | `.kiro/` / `.qoder/` | Rule-based steering and architectural constraints |
+| **Cursor** | `.cursor/commands/` + `.shared/` | Custom terminal commands & context indexing |
+| **Windsurf** | `.windsurf/workflows/` + `.shared/` | Agentic workflow automation |
+| **Antigravity** | `.agent/skills/` + `.shared/` | Advanced multi-step architecture design |
+| **Gemini CLI** | `.gemini/skills/` + `.shared/` | Google Gemini native skill extensions |
+| **GitHub Copilot** | `.github/prompts/` + `.shared/` | Custom prompt templates & system instructions |
+| **RooCode** | `.roo/commands/` + `.shared/` | Specialized custom command integration |
+| **Kiro** | `.kiro/steering/` + `.shared/` | Rule-based steering and architectural constraints |
+| **Qoder** | `.qoder/rules/` + `.shared/` | Custom rules for Qoder AI |
+| **Codex** | `.codex/skills/` + `.shared/` | OpenAI Codex skill definitions |
+| **CodeBuddy** | `.codebuddy/commands/` + `.shared/` | CodeBuddy terminal skills |
+| **Trae** | `.trae/rules/` + `.shared/` | Trae AI custom rules |
+| **OpenCode** | `.opencode/prompts/` + `.shared/` | OpenCode prompt templates |
+| **Continue** | `.continue/prompts/` + `.shared/` | Continue AI prompt integration |
 
 ---
 

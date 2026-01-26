@@ -1,0 +1,18 @@
+{
+    "platform": "gemini",
+    "displayName": "Gemini CLI",
+    "installType": "reference",
+    "folderStructure": {
+        "root": ".gemini",
+        "skillPath": "skills",
+        "filename": "backend-architect.md"
+    },
+    "scriptPath": ".shared/backend-architect/scripts/search.py",
+    "frontmatter": null,
+    "sections": {
+        "quickReference": false
+    },
+    "title": "Backend Architect",
+    "description": "Comprehensive backend architecture guide for building scalable, secure, and maintainable systems. Contains architecture patterns, database strategies, security best practices, API design patterns, scaling solutions, and stack-specific guidelines.",
+    "skillOrWorkflow": "Skill"
+}
