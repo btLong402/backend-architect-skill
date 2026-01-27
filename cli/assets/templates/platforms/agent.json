@@ -15,7 +15,7 @@
     "sections": {
         "quickReference": false
     },
-    "title": "Backend Architect",
+    "title": "backend-architect",
     "description": "Comprehensive backend architecture guide for building scalable, secure, and maintainable systems. Contains architecture patterns, database strategies, security best practices, API design patterns, scaling solutions, and stack-specific guidelines.",
     "skillOrWorkflow": "Skill"
 }

@@ -5,7 +5,7 @@
 **Expert architectural intelligence for building professional, scalable, and secure backend systems.**
 
 [![npm version](https://img.shields.io/npm/v/backend-architect-cli.svg)](https://www.npmjs.com/package/backend-architect-cli)
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/backend-architect-cli.svg)](https://www.npmjs.com/package/backend-architect-cli)
 
@@ -72,37 +72,51 @@ backend-architect update
 
 Deploy **Backend Architect** to your entire development workflow (14 platforms):
 
-| Assistant | Integration Method | Purpose |
-|-----------|---------------------|---------|
-| **Claude Code** | `.claude/skills/` | Direct skill execution & environment injection |
-| **Cursor** | `.cursor/commands/` + `.shared/` | Custom terminal commands & context indexing |
-| **Windsurf** | `.windsurf/workflows/` + `.shared/` | Agentic workflow automation |
-| **Antigravity** | `.agent/skills/` + `.shared/` | Advanced multi-step architecture design |
-| **Gemini CLI** | `.gemini/skills/` + `.shared/` | Google Gemini native skill extensions |
-| **GitHub Copilot** | `.github/prompts/` + `.shared/` | Custom prompt templates & system instructions |
-| **RooCode** | `.roo/commands/` + `.shared/` | Specialized custom command integration |
-| **Kiro** | `.kiro/steering/` + `.shared/` | Rule-based steering and architectural constraints |
-| **Qoder** | `.qoder/rules/` + `.shared/` | Custom rules for Qoder AI |
-| **Codex** | `.codex/skills/` + `.shared/` | OpenAI Codex skill definitions |
-| **CodeBuddy** | `.codebuddy/commands/` + `.shared/` | CodeBuddy terminal skills |
-| **Trae** | `.trae/rules/` + `.shared/` | Trae AI custom rules |
-| **OpenCode** | `.opencode/prompts/` + `.shared/` | OpenCode prompt templates |
-| **Continue** | `.continue/prompts/` + `.shared/` | Continue AI prompt integration |
+| Assistant | Install Type | Structure |
+|-----------|--------------|-----------|
+| **Claude Code** | Full | `.claude/skills/backend-architect/` |
+| **Codex** | Full | `.codex/skills/backend-architect/` |
+| **Continue** | Full | `.continue/skills/backend-architect/` |
+| **Antigravity** | Full | `.agent/skills/backend-architect/` |
+| **Gemini CLI** | Full | `.gemini/skills/backend-architect/` |
+| **OpenCode** | Full | `.opencode/skills/backend-architect/` |
+| **CodeBuddy** | Full | `.codebuddy/skills/backend-architect/` |
+| **Trae** | Full | `.trae/skills/backend-architect/` |
+| **Cursor** | Reference | `.cursor/commands/` + `.shared/` |
+| **Windsurf** | Reference | `.windsurf/skills/` + `.shared/` |
+| **GitHub Copilot** | Reference | `.github/prompts/` + `.shared/` |
+| **Kiro** | Reference | `.kiro/steering/` + `.shared/` |
+| **Qoder** | Reference | `.qoder/skills/` + `.shared/` |
+| **Roo Code** | Reference | `.roo/commands/` + `.shared/` |
+
+**Install Types:**
+- **Full**: Data và scripts nằm trong skill folder (standalone)
+- **Reference**: Skill file trỏ đến `.shared/` folder chung (tiết kiệm dung lượng)
 
 ---
 
 ## 🛠️ Usage
 
-### Workflow-Based (Cursor, Windsurf, Antigravity)
-Use the slash command or workflow runner:
-```
-/backend-architect Create a microservices design for a payment processing system
-```
+### Skill Mode (Auto-activate)
 
-### Skill-Based (Claude Code, Gemini CLI)
-The skill activates automatically when you request architectural work. You can also trigger it manually:
+**Supported:** Claude Code, Codex, Continue, Antigravity, Gemini CLI, OpenCode, CodeBuddy, Trae
+
+The skill activates automatically when you request architectural work. Just chat naturally:
+
 ```
 Design a scalable backend for a real-time IoT telemetry system using Go and Kafka.
+```
+
+> **Trae**: Switch to **SOLO** mode first. The skill will activate for architecture requests.
+
+### Workflow Mode (Slash Command)
+
+**Supported:** Cursor, Windsurf, GitHub Copilot, Kiro, Qoder, Roo Code
+
+Use the slash command to invoke the skill:
+
+```
+/backend-architect Create a microservices design for a payment processing system
 ```
 
 ### Example Prompts
@@ -124,6 +138,26 @@ Design a scalable backend for a real-time IoT telemetry system using Go and Kafk
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## � Acknowledgements
+
+Inspired by [UI UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) by [@viettranx](https://github.com/viettranx). The architecture, CLI design, and multi-platform skill system are adapted from this excellent project.
+
+---
+
+## �📝 Changelog
+
+### v2.1.0 (2026-01-27)
+- **Type Safety**: Full Python type hints for Pylance strict mode compatibility
+- **Python 3.10+**: Updated minimum Python version (uses modern union syntax `str | None`)
+- **Code Quality**: Removed unused imports, fixed all linter warnings
+
+### v2.0.0
+- Initial public release with 14 AI assistant support
+- BM25-based semantic search engine
+- Architecture System Generator
 
 ---
 

@@ -1,18 +1,21 @@
 {
     "platform": "opencode",
     "displayName": "OpenCode",
-    "installType": "reference",
+    "installType": "full",
     "folderStructure": {
         "root": ".opencode",
-        "skillPath": "skills",
-        "filename": "backend-architect.md"
+        "skillPath": "skills/backend-architect",
+        "filename": "SKILL.md"
     },
-    "scriptPath": ".shared/backend-architect/scripts/search.py",
-    "frontmatter": null,
+    "scriptPath": "skills/backend-architect/scripts/search.py",
+    "frontmatter": {
+        "name": "backend-architect",
+        "description": "Backend architecture intelligence with searchable database"
+    },
     "sections": {
         "quickReference": false
     },
-    "title": "Backend Architect",
+    "title": "backend-architect",
     "description": "Comprehensive backend architecture guide for building scalable, secure, and maintainable systems. Contains architecture patterns, database strategies, security best practices, API design patterns, scaling solutions, and stack-specific guidelines.",
     "skillOrWorkflow": "Skill"
 }

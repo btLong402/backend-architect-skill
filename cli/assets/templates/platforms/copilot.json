@@ -5,14 +5,14 @@
     "folderStructure": {
         "root": ".github",
         "skillPath": "prompts",
-        "filename": "backend-architect.md"
+        "filename": "backend-architect.prompt.md"
     },
     "scriptPath": ".shared/backend-architect/scripts/search.py",
     "frontmatter": null,
     "sections": {
         "quickReference": false
     },
-    "title": "Backend Architect",
+    "title": "backend-architect",
     "description": "Comprehensive backend architecture guide for building scalable, secure, and maintainable systems. Contains architecture patterns, database strategies, security best practices, API design patterns, scaling solutions, and stack-specific guidelines.",
     "skillOrWorkflow": "Workflow"
 }

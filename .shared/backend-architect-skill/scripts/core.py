@@ -63,6 +63,11 @@ CSV_CONFIG = {
         "file": "database-design.csv",
         "search_cols": ["category", "principle", "description"],
         "output_cols": ["category", "principle", "description", "recommendation", "impact"]
+    },
+    "backend-reasoning": {
+        "file": "backend-reasoning.csv",
+        "search_cols": ["Product_Category", "Recommended_Architecture", "Stack_Priority", "Database_Priority", "Key_Components", "Decision_Rules"],
+        "output_cols": ["Product_Category", "Recommended_Architecture", "Stack_Priority", "Database_Priority", "API_Pattern", "Key_Components", "Decision_Rules", "Anti_Patterns", "Severity"]
     }
 }
 

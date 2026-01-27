@@ -178,6 +178,20 @@ bun run build
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/btLong402/backend-architect-skill/blob/main/LICENSE) file for details.
 
+---
+
+## 📝 Changelog
+
+### v2.1.0 (2026-01-27)
+- **Type Safety**: Full Python type hints for Pylance strict mode
+- **Python 3.10+**: Minimum Python version updated
+- **Code Quality**: Removed unused imports, fixed linter warnings
+
+### v2.0.0
+- Initial release with 14 AI assistant support
+
+---
+
 <div align="center">
 
 **[GitHub](https://github.com/btLong402/backend-architect-skill) | [npm](https://www.npmjs.com/package/backend-architect-cli)**
