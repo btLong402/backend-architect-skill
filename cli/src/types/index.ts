@@ -1,4 +1,4 @@
-export type AIType = 'claude' | 'cursor' | 'windsurf' | 'antigravity' | 'copilot' | 'kiro' | 'roocode' | 'codex' | 'qoder' | 'gemini' | 'trae' | 'opencode' | 'continue' | 'codebuddy' | 'all';
+export type AIType = 'claude' | 'cursor' | 'windsurf' | 'antigravity' | 'copilot' | 'kiro' | 'roocode' | 'codex' | 'qoder' | 'gemini' | 'trae' | 'opencode' | 'continue' | 'codebuddy' | 'vscode' | 'all';
 
 export type InstallType = 'full' | 'reference';
 
@@ -43,7 +43,7 @@ export interface PlatformConfig {
 
 export const AI_TYPES: AIType[] = [
     'claude', 'cursor', 'windsurf', 'antigravity', 'copilot', 'roocode',
-    'kiro', 'codex', 'qoder', 'gemini', 'trae', 'opencode', 'continue', 'codebuddy', 'all'
+    'kiro', 'codex', 'qoder', 'gemini', 'trae', 'opencode', 'continue', 'codebuddy', 'vscode', 'all'
 ];
 
 // Legacy folder mapping for backward compatibility with ZIP-based installs
@@ -62,4 +62,5 @@ export const AI_FOLDERS: Record<Exclude<AIType, 'all'>, string[]> = {
     opencode: ['.opencode', '.shared'],
     continue: ['.continue', '.shared'],
     codebuddy: ['.codebuddy', '.shared'],
+    vscode: ['.github', '.shared'],
 };

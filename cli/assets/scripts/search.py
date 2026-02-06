@@ -23,22 +23,21 @@ if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 import argparse
-from core import AVAILABLE_STACKS, AVAILABLE_DOMAINS, MAX_RESULTS, search, search_stack
-from architecture_system import generate_architecture_system
-from typing import Any
+from core import CSV_CONFIG, AVAILABLE_STACKS, AVAILABLE_DOMAINS, MAX_RESULTS, search, search_stack
+from architecture_system import generate_architecture_system, persist_architecture_system
 
 
-def format_output(result: dict[str, Any]) -> str:
+def format_output(result):
     """Format results for AI consumption (token-optimized)"""
     if "error" in result:
         return f"Error: {result['error']}"
 
-    output: list[str] = []
+    output = []
     if result.get("stack"):
-        output.append("## Backend Architect Stack Guidelines")
+        output.append(f"## Backend Architect Stack Guidelines")
         output.append(f"**Stack:** {result['stack']} | **Query:** {result['query']}")
     else:
-        output.append("## Backend Architect Search Results")
+        output.append(f"## Backend Architect Search Results")
         output.append(f"**Domain:** {result['domain']} | **Query:** {result['query']}")
     output.append(f"**Source:** {result['file']} | **Found:** {result['count']} results\n")
 

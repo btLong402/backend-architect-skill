@@ -15,9 +15,9 @@ Usage:
 
 import csv
 import json
+import os
 from datetime import datetime
 from pathlib import Path
-from typing import Any
 from core import search, DATA_DIR
 
 
@@ -38,10 +38,10 @@ SEARCH_CONFIG = {
 class ArchitectureSystemGenerator:
     """Generates backend architecture recommendations from aggregated searches."""
 
-    def __init__(self) -> None:
-        self.reasoning_data: list[dict[str, str]] = self._load_reasoning()
+    def __init__(self):
+        self.reasoning_data = self._load_reasoning()
 
-    def _load_reasoning(self) -> list[dict[str, str]]:
+    def _load_reasoning(self) -> list:
         """Load reasoning rules from CSV."""
         filepath = DATA_DIR / REASONING_FILE
         if not filepath.exists():
@@ -49,9 +49,9 @@ class ArchitectureSystemGenerator:
         with open(filepath, 'r', encoding='utf-8') as f:
             return list(csv.DictReader(f))
 
-    def _multi_domain_search(self, query: str, arch_priority: list[str] | None = None) -> dict[str, Any]:
+    def _multi_domain_search(self, query: str, arch_priority: list = None) -> dict:
         """Execute searches across multiple domains."""
-        results: dict[str, Any] = {}
+        results = {}
         for domain, config in SEARCH_CONFIG.items():
             if domain == "architecture" and arch_priority:
                 priority_query = " ".join(arch_priority[:2]) if arch_priority else query
@@ -61,7 +61,7 @@ class ArchitectureSystemGenerator:
                 results[domain] = search(query, domain, config["max_results"])
         return results
 
-    def _find_reasoning_rule(self, category: str) -> dict[str, str]:
+    def _find_reasoning_rule(self, category: str) -> dict:
         """Find matching reasoning rule for a product category."""
         category_lower = category.lower()
 
@@ -85,7 +85,7 @@ class ArchitectureSystemGenerator:
 
         return {}
 
-    def _apply_reasoning(self, category: str) -> dict[str, Any]:
+    def _apply_reasoning(self, category: str) -> dict:
         """Apply reasoning rules to get architecture recommendations."""
         rule = self._find_reasoning_rule(category)
 
@@ -102,16 +102,16 @@ class ArchitectureSystemGenerator:
             }
 
         # Parse decision rules JSON
-        decision_rules: dict[str, Any] = {}
+        decision_rules = {}
         try:
-            decision_rules = json.loads(str(rule.get("Decision_Rules", "{}")))
+            decision_rules = json.loads(rule.get("Decision_Rules", "{}"))
         except json.JSONDecodeError:
             pass
 
         return {
             "recommended_architecture": rule.get("Recommended_Architecture", ""),
-            "stack_priority": [s.strip() for s in str(rule.get("Stack_Priority", "")).split("+")],
-            "database_priority": [d.strip() for d in str(rule.get("Database_Priority", "")).split("+")],
+            "stack_priority": [s.strip() for s in rule.get("Stack_Priority", "").split("+")],
+            "database_priority": [d.strip() for d in rule.get("Database_Priority", "").split("+")],
             "api_pattern": rule.get("API_Pattern", ""),
             "key_components": rule.get("Key_Components", ""),
             "anti_patterns": rule.get("Anti_Patterns", ""),
@@ -119,20 +119,20 @@ class ArchitectureSystemGenerator:
             "severity": rule.get("Severity", "MEDIUM")
         }
 
-    def _extract_results(self, search_result: dict[str, Any]) -> list[dict[str, Any]]:
+    def _extract_results(self, search_result: dict) -> list:
         """Extract results list from search result dict."""
         return search_result.get("results", [])
 
-    def generate(self, query: str, project_name: str | None = None) -> dict[str, Any]:
+    def generate(self, query: str, project_name: str = None) -> dict:
         """Generate complete backend architecture recommendation."""
         # Step 1: Search product to get category
         product_result = search(query, "product", 1)
-        product_results: list[dict[str, Any]] = product_result.get("results", [])
+        product_results = product_result.get("results", [])
         category = "General"
-        product_info: dict[str, Any] = {}
+        product_info = {}
         if product_results:
             product_info = product_results[0]
-            category = str(product_info.get("name", "General"))
+            category = product_info.get("name", "General")
 
         # Step 2: Get reasoning rules for this category
         reasoning = self._apply_reasoning(category)
@@ -211,7 +211,7 @@ class ArchitectureSystemGenerator:
 # ============ OUTPUT FORMATTERS ============
 BOX_WIDTH = 95
 
-def format_ascii_box(arch_system: dict[str, Any]) -> str:
+def format_ascii_box(arch_system: dict) -> str:
     """Format architecture system as ASCII box."""
     project = arch_system.get("project_name", "PROJECT")
     category = arch_system.get("category", "")
@@ -224,12 +224,12 @@ def format_ascii_box(arch_system: dict[str, Any]) -> str:
     platform = arch_system.get("platform", {})
     anti_patterns = arch_system.get("anti_patterns", "")
 
-    def wrap_text(text: str, prefix: str, width: int) -> list[str]:
+    def wrap_text(text: str, prefix: str, width: int) -> list:
         """Wrap long text into multiple lines."""
         if not text:
             return []
         words = text.split()
-        lines: list[str] = []
+        lines = []
         current_line = prefix
         for word in words:
             if len(current_line) + len(word) + 1 <= width - 2:
@@ -242,7 +242,7 @@ def format_ascii_box(arch_system: dict[str, Any]) -> str:
             lines.append(current_line)
         return lines
 
-    lines: list[str] = []
+    lines = []
     w = BOX_WIDTH - 1
 
     lines.append("+" + "=" * w + "+")
@@ -360,7 +360,7 @@ def format_ascii_box(arch_system: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def format_markdown(arch_system: dict[str, Any]) -> str:
+def format_markdown(arch_system: dict) -> str:
     """Format architecture system as markdown."""
     project = arch_system.get("project_name", "PROJECT")
     category = arch_system.get("category", "")
@@ -373,7 +373,7 @@ def format_markdown(arch_system: dict[str, Any]) -> str:
     platform = arch_system.get("platform", {})
     anti_patterns = arch_system.get("anti_patterns", "")
 
-    lines: list[str] = []
+    lines = []
     lines.append(f"# Backend Architecture System: {project}")
     lines.append(f"\n**Category:** {category}")
     lines.append("")
@@ -470,8 +470,8 @@ def format_markdown(arch_system: dict[str, Any]) -> str:
 
 
 # ============ MAIN ENTRY POINT ============
-def generate_architecture_system(query: str, project_name: str | None = None, output_format: str = "ascii",
-                                  persist: bool = False, service: str | None = None, output_dir: str | None = None) -> str:
+def generate_architecture_system(query: str, project_name: str = None, output_format: str = "ascii",
+                                  persist: bool = False, service: str = None, output_dir: str = None) -> str:
     """
     Main entry point for architecture system generation.
 
@@ -499,8 +499,8 @@ def generate_architecture_system(query: str, project_name: str | None = None, ou
 
 
 # ============ PERSISTENCE FUNCTIONS ============
-def persist_architecture_system(arch_system: dict[str, Any], service: str | None = None, output_dir: str | None = None, 
-                                 service_query: str | None = None) -> dict[str, Any]:
+def persist_architecture_system(arch_system: dict, service: str = None, output_dir: str = None, 
+                                 service_query: str = None) -> dict:
     """
     Persist architecture system to architecture-system/<project>/ folder.
     
@@ -521,7 +521,7 @@ def persist_architecture_system(arch_system: dict[str, Any], service: str | None
     arch_system_dir = base_dir / "architecture-system" / project_slug
     services_dir = arch_system_dir / "services"
     
-    created_files: list[str] = []
+    created_files = []
     
     # Create directories
     arch_system_dir.mkdir(parents=True, exist_ok=True)
@@ -550,12 +550,12 @@ def persist_architecture_system(arch_system: dict[str, Any], service: str | None
     }
 
 
-def format_master_md(arch_system: dict[str, Any]) -> str:
+def format_master_md(arch_system: dict) -> str:
     """Format architecture system as MASTER.md with hierarchical override logic."""
     project = arch_system.get("project_name", "PROJECT")
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    lines: list[str] = []
+    lines = []
     
     lines.append("# Architecture System Master File")
     lines.append("")
@@ -576,13 +576,13 @@ def format_master_md(arch_system: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def format_service_override_md(arch_system: dict[str, Any], service_name: str, service_query: str | None = None) -> str:
+def format_service_override_md(arch_system: dict, service_name: str, service_query: str = None) -> str:
     """Format a service-specific override file."""
     project = arch_system.get("project_name", "PROJECT")
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     service_title = service_name.replace("-", " ").replace("_", " ").title()
     
-    lines: list[str] = []
+    lines = []
     
     lines.append(f"# {service_title} Service Overrides")
     lines.append("")

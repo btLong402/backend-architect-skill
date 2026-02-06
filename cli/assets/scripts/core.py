@@ -8,13 +8,12 @@ import re
 from pathlib import Path
 from math import log
 from collections import defaultdict
-from typing import Any
 
 # ============ CONFIGURATION ============
 DATA_DIR = Path(__file__).parent.parent / "data"
 MAX_RESULTS = 3
 
-CSV_CONFIG: dict[str, dict[str, str | list[str]]] = {
+CSV_CONFIG = {
     "architecture": {
         "file": "architectures.csv",
         "search_cols": ["id", "name", "description", "use_case", "key_components"],
@@ -95,49 +94,49 @@ AVAILABLE_DOMAINS = list(CSV_CONFIG.keys())
 class BM25:
     """BM25 ranking algorithm for text search"""
 
-    def __init__(self, k1: float = 1.5, b: float = 0.75) -> None:
+    def __init__(self, k1=1.5, b=0.75):
         self.k1 = k1
         self.b = b
-        self.corpus: list[list[str]] = []
-        self.doc_lengths: list[int] = []
-        self.avgdl: float = 0
-        self.idf: dict[str, float] = {}
-        self.doc_freqs: defaultdict[str, int] = defaultdict(int)
-        self.n: int = 0
+        self.corpus = []
+        self.doc_lengths = []
+        self.avgdl = 0
+        self.idf = {}
+        self.doc_freqs = defaultdict(int)
+        self.N = 0
 
-    def tokenize(self, text: str) -> list[str]:
+    def tokenize(self, text):
         """Lowercase, split, remove punctuation, filter short words"""
         text = re.sub(r'[^\w\s]', ' ', str(text).lower())
         return [w for w in text.split() if len(w) > 2]
 
-    def fit(self, documents: list[str]) -> None:
+    def fit(self, documents):
         """Build BM25 index from documents"""
         self.corpus = [self.tokenize(doc) for doc in documents]
-        self.n = len(self.corpus)
-        if self.n == 0:
+        self.N = len(self.corpus)
+        if self.N == 0:
             return
         self.doc_lengths = [len(doc) for doc in self.corpus]
-        self.avgdl = sum(self.doc_lengths) / self.n
+        self.avgdl = sum(self.doc_lengths) / self.N
 
         for doc in self.corpus:
-            seen: set[str] = set()
+            seen = set()
             for word in doc:
                 if word not in seen:
                     self.doc_freqs[word] += 1
                     seen.add(word)
 
         for word, freq in self.doc_freqs.items():
-            self.idf[word] = log((self.n - freq + 0.5) / (freq + 0.5) + 1)
+            self.idf[word] = log((self.N - freq + 0.5) / (freq + 0.5) + 1)
 
-    def score(self, query: str) -> list[tuple[int, float]]:
+    def score(self, query):
         """Score all documents against query"""
         query_tokens = self.tokenize(query)
-        scores: list[tuple[int, float]] = []
+        scores = []
 
         for idx, doc in enumerate(self.corpus):
-            score = 0.0
+            score = 0
             doc_len = self.doc_lengths[idx]
-            term_freqs: defaultdict[str, int] = defaultdict(int)
+            term_freqs = defaultdict(int)
             for word in doc:
                 term_freqs[word] += 1
 
@@ -155,13 +154,13 @@ class BM25:
 
 
 # ============ SEARCH FUNCTIONS ============
-def _load_csv(filepath: Path) -> list[dict[str, str]]:
+def _load_csv(filepath):
     """Load CSV and return list of dicts"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return list(csv.DictReader(f))
 
 
-def _search_csv(filepath: Path, search_cols: list[str], output_cols: list[str], query: str, max_results: int) -> list[dict[str, str]]:
+def _search_csv(filepath, search_cols, output_cols, query, max_results):
     """Core search function using BM25"""
     if not filepath.exists():
         return []
@@ -177,7 +176,7 @@ def _search_csv(filepath: Path, search_cols: list[str], output_cols: list[str], 
     ranked = bm25.score(query)
 
     # Get top results with score > 0
-    results: list[dict[str, str]] = []
+    results = []
     for idx, score in ranked[:max_results]:
         if score > 0:
             row = data[idx]
@@ -186,7 +185,7 @@ def _search_csv(filepath: Path, search_cols: list[str], output_cols: list[str], 
     return results
 
 
-def detect_domain(query: str) -> str:
+def detect_domain(query):
     """Auto-detect the most relevant domain from query"""
     query_lower = query.lower()
 
@@ -203,28 +202,23 @@ def detect_domain(query: str) -> str:
         "platform": ["kubernetes", "terraform", "argocd", "vault", "observability", "gitops", "devops", "platform", "iac"]
     }
 
-    scores: dict[str, int] = {domain: sum(1 for kw in keywords if kw in query_lower) for domain, keywords in domain_keywords.items()}
-    best = max(scores, key=lambda k: scores[k])
+    scores = {domain: sum(1 for kw in keywords if kw in query_lower) for domain, keywords in domain_keywords.items()}
+    best = max(scores, key=scores.get)
     return best if scores[best] > 0 else "architecture"
 
 
-def search(query: str, domain: str | None = None, max_results: int = MAX_RESULTS) -> dict[str, Any]:
+def search(query, domain=None, max_results=MAX_RESULTS):
     """Main search function with auto-domain detection"""
     if domain is None:
         domain = detect_domain(query)
 
     config = CSV_CONFIG.get(domain, CSV_CONFIG["architecture"])
-    filepath = DATA_DIR / str(config["file"])
+    filepath = DATA_DIR / config["file"]
 
     if not filepath.exists():
         return {"error": f"File not found: {filepath}", "domain": domain}
 
-    search_cols = config["search_cols"]
-    output_cols = config["output_cols"]
-    if isinstance(search_cols, list) and isinstance(output_cols, list):
-        results = _search_csv(filepath, search_cols, output_cols, query, max_results)
-    else:
-        results = []
+    results = _search_csv(filepath, config["search_cols"], config["output_cols"], query, max_results)
 
     return {
         "domain": domain,
@@ -235,7 +229,7 @@ def search(query: str, domain: str | None = None, max_results: int = MAX_RESULTS
     }
 
 
-def search_stack(query: str, stack: str, max_results: int = MAX_RESULTS) -> dict[str, Any]:
+def search_stack(query, stack, max_results=MAX_RESULTS):
     """Search stack-specific guidelines"""
     if stack not in STACK_CONFIG:
         return {"error": f"Unknown stack: {stack}. Available: {', '.join(AVAILABLE_STACKS)}"}

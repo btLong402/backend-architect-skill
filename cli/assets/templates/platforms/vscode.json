@@ -1,6 +1,6 @@
 {
-    "platform": "copilot",
-    "displayName": "GitHub Copilot",
+    "platform": "vscode",
+    "displayName": "VS Code",
     "installType": "full",
     "folderStructure": {
         "root": ".github",

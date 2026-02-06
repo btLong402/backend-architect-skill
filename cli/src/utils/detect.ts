@@ -75,7 +75,7 @@ export function getAITypeDescription(aiType: AIType): string {
         case 'antigravity':
             return 'Antigravity (.agent/skills/)';
         case 'copilot':
-            return 'GitHub Copilot (.github/prompts/ + .shared/)';
+            return 'GitHub Copilot (.github/skills/)';
         case 'kiro':
             return 'Kiro (.kiro/steering/ + .shared/)';
         case 'codex':
@@ -94,6 +94,8 @@ export function getAITypeDescription(aiType: AIType): string {
             return 'Continue (.continue/skills/)';
         case 'codebuddy':
             return 'CodeBuddy (.codebuddy/skills/)';
+        case 'vscode':
+            return 'VS Code (.github/skills/)';
         case 'all':
             return 'All AI assistants';
     }

@@ -92,8 +92,11 @@ npx backend-architect-cli init --ai windsurf
 # RooCode / RooCline (.roo/commands/)
 npx backend-architect-cli init --ai roocode
 
-# GitHub Copilot (.github/prompts/)
+# GitHub Copilot (.github/skills/)
 npx backend-architect-cli init --ai copilot
+
+# VS Code (.github/skills/)
+npx backend-architect-cli init --ai vscode
 
 # Kiro AI (.kiro/steering/)
 npx backend-architect-cli init --ai kiro
@@ -140,7 +143,8 @@ npx backend-architect-cli init --ai claude --legacy
 | **Cursor** | `.cursor/commands/` + `.shared/` | Custom terminal commands |
 | **Windsurf** | `.windsurf/workflows/` + `.shared/` | AI-driven workflows |
 | **Antigravity** | `.agent/skills/` + `.shared/` | Advanced agentic skills |
-| **Copilot** | `.github/prompts/` + `.shared/` | Custom GitHub Copilot prompts |
+| **Copilot** | `.github/skills/` | Custom GitHub Copilot skills |
+| **VS Code** | `.github/skills/` | VS Code AI skills |
 | **Gemini CLI** | `.gemini/skills/` + `.shared/` | Google Gemini skill extensions |
 | **RooCode** | `.roo/commands/` + `.shared/` | RooCode custom commands |
 | **Kiro** | `.kiro/steering/` + `.shared/` | Kiro AI steering files |
@@ -181,6 +185,11 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ---
 
 ## 📝 Changelog
+
+### v2.2.0 (2026-02-06)
+- **VS Code 1.109 Support**: GitHub Copilot and VS Code now use `.github/skills/` format
+- **Breaking Change**: Prompts renamed to Skills for Copilot/VS Code platforms
+- **Added**: VS Code as standalone platform option
 
 ### v2.1.0 (2026-01-27)
 - **Type Safety**: Full Python type hints for Pylance strict mode

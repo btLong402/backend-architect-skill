@@ -41,6 +41,7 @@ const AI_TO_PLATFORM: Record<string, string> = {
     trae: 'trae',
     continue: 'continue',
     codebuddy: 'codebuddy',
+    vscode: 'vscode',
 };
 
 async function exists(path: string): Promise<boolean> {
